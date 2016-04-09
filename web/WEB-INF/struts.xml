@@ -18,26 +18,28 @@
             <result name="success">/HelloWorld.jsp</result>
             <result name="error">/AccessDenied.jsp</result>
         </action>
+        
+        <!-- Default interceptor stack. -->
+        <default-interceptor-ref name="paramsPrepareParamsStack"/>
+         
+        <action name="userList" class="com.tallerstruts.actions.UsuarioAction" method="list">
+            <result name="success">/WEB-INF/jsp/employees.jsp</result>
+            <!-- we don't need the full stack here -->
+            <interceptor-ref name="basicStack"/>
+        </action>
+ 
+        <action name="userCrud" class="com.tallerstruts.actions.UsuarioAction" method="input">
+            <result name="success" type="redirect-action">userList</result>
+            <result name="input">/UsuarioForm.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        
+        <!--DASHBOARD -->
         <action name="dashboard" 
                 class="com.action.DashboardAction">
             <result name="success">/dashboard.jsp</result>
             <result name="error">/AccessDenied.jsp</result>
         </action>
         
-        
-        <!-- Default interceptor stack. -->
-        <default-interceptor-ref name="paramsPrepareParamsStack"/>
-         
-        <action name="index" class="com.aurifa.struts2.tutorial.action.EmployeeAction" method="list">
-            <result name="success">/WEB-INF/jsp/employees.jsp</result>
-            <!-- we don't need the full stack here -->
-            <interceptor-ref name="basicStack"/>
-        </action>
- 
-        <action name="userCrud" class="com.aurifa.struts2.tutorial.action.EmployeeAction" method="input">
-            <result name="success" type="redirect-action">dashboard</result>
-            <result name="input">/UsuarioForm.jsp</result>
-            <result name="error">/error.jsp</result>
-        </action>
     </package>
 </struts>
