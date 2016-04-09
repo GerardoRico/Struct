@@ -7,6 +7,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>acceso denegado</h1>
+        <h1>la lista de usuarios</h1>
     </body>
 </html>

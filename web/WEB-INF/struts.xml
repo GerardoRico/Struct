@@ -8,22 +8,17 @@
     <constant name="struts.configuration.xml.reload" value="true" />
   
     <package name="demo-struts" extends="struts-default">
-        <action name="index" 
-                class="com.action.IndexAction">
+        <!-- INDEX -->
+        <action name="index" class="com.action.IndexAction">
             <result name="success">/index.jsp</result>
             <result name="error">/AccessDenied.jsp</result>
         </action>
-        <action name="login" 
-                class="com.tutorialspoint.struts2.HelloWorldAction">
-            <result name="success">/HelloWorld.jsp</result>
-            <result name="error">/AccessDenied.jsp</result>
-        </action>
-        
+
         <!-- Default interceptor stack. -->
         <default-interceptor-ref name="paramsPrepareParamsStack"/>
          
         <action name="userList" class="com.tallerstruts.actions.UsuarioAction" method="list">
-            <result name="success">/WEB-INF/jsp/employees.jsp</result>
+            <result name="success">/UsuariosList.jsp</result>
             <!-- we don't need the full stack here -->
             <interceptor-ref name="basicStack"/>
         </action>
@@ -31,14 +26,14 @@
         <action name="userCrud" class="com.tallerstruts.actions.UsuarioAction" method="input">
             <result name="success" type="redirect-action">userList</result>
             <result name="input">/UsuarioForm.jsp</result>
-            <result name="error">/error.jsp</result>
+            <result name="error">/Error.jsp</result>
         </action>
         
-        <!--DASHBOARD -->
-        <action name="dashboard" 
-                class="com.action.DashboardAction">
-            <result name="success">/dashboard.jsp</result>
-            <result name="error">/AccessDenied.jsp</result>
+        <!--DASHBOARD solo para autenticados -->
+        <action name="dashboard" class="com.action.DashboardAction">
+            <result name="success">/Dashboard.jsp</result>
+            <result name="login" type="redirect-action">index</result>
+            <result name="error" type="redirect-action">index</result>
         </action>
         
     </package>
