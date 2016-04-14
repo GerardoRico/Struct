@@ -11,6 +11,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>hola</h1>
+        <s:form action="validar">
+            <s:textfield name="us.nombre" label="Ingresar usuario"/>
+            <s:password name="us.pass" label="Ingresar password"/>
+            <s:submit label="Ingresar"/>
+        </s:form>
     </body>
 </html>

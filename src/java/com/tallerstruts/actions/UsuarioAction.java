@@ -2,15 +2,34 @@ package com.tallerstruts.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
+import com.tallerstruts.models.Usuario;
 
 public class UsuarioAction extends ActionSupport implements Preparable {
+    
+    private Usuario Us = new Usuario();
+    
+    public Usuario getUs() {
+        return Us;
+    }
 
+    public void setUs(Usuario Us) {
+        this.Us = Us;
+    }
+    
+    
     public UsuarioAction() {
     }
 
     @Override
     public String execute() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+       String ir = ERROR;
+        if(getUs().getNombre().equals("yerard") && getUs().getPassword().equals("1234")){
+            Us.setNombre("Gerardo");
+            ir = SUCCESS;
+        }else{
+            Us.setNombre("Error");
+        }
+        return ir;
     }
 
     @Override
