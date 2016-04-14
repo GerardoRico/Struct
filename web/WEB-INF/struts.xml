@@ -6,9 +6,8 @@
 <struts>
     <package name="demo-struts" extends="struts-default">
         <!-- INDEX -->
-        <action name="index" class="com.action.IndexAction">
+        <action name="index" class="com.tallerstruts.actions.IndexAction">
             <result name="success">index.jsp</result>
-            <result name="error">AccessDenied.jsp</result>
         </action>
          
         <action name="userList" class="com.tallerstruts.actions.UsuarioAction" method="list">
